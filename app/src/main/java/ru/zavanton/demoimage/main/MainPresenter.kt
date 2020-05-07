@@ -1,8 +1,7 @@
 package ru.zavanton.demoimage.main
 
-import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentManager
 import ru.zavanton.demoimage.app.App
+import ru.zavanton.demoimage.navigation.DialogScreen
 
 class MainPresenter {
 
@@ -18,10 +17,7 @@ class MainPresenter {
         this.view = null
     }
 
-    fun onHelperButtonClick(
-        fragmentManager: FragmentManager?,
-        dialogFragment: DialogFragment
-    ) {
-        router.showDialog(fragmentManager, "some tag", dialogFragment)
+    fun onHelperButtonClick() {
+        router.navigateTo(DialogScreen("Attention"))
     }
 }

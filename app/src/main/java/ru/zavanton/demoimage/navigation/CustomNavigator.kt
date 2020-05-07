@@ -1,21 +1,36 @@
 package ru.zavanton.demoimage.navigation
 
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
-import ru.terrakok.cicerone.commands.Command
+import ru.terrakok.cicerone.android.support.SupportAppScreen
+import ru.terrakok.cicerone.commands.Forward
 
 internal class CustomNavigator(activity: FragmentActivity, containerId: Int) :
     SupportAppNavigator(activity, containerId) {
 
-    override fun applyCommand(command: Command) {
-        super.applyCommand(command)
+    override fun fragmentForward(command: Forward) {
+        val screen = command.screen as SupportAppScreen
+        val fragment = createFragment(screen)
 
-        if (command is ShowDialogCommand) {
-            val fragmentManager = command.fragmentManager
-            val tag = command.tag
-            val dialogFragment = command.dialogFragment
+        val fragmentTransaction = fragmentManager.beginTransaction()
 
-            dialogFragment.show(fragmentManager, tag)
+        setupFragmentTransaction(
+            command,
+            fragmentManager.findFragmentById(containerId),
+            fragment,
+            fragmentTransaction
+        )
+
+        if (fragment is DialogFragment) {
+            fragment.show(fragmentManager, screen.screenKey)
+        } else {
+            fragmentTransaction.replace(containerId, fragment!!)
+
+            fragmentTransaction
+                .addToBackStack(screen.screenKey)
+                .commit()
+            localStackCopy.add(screen.screenKey)
         }
     }
 }

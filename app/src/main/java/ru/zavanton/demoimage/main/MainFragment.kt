@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_main.*
 import ru.zavanton.demoimage.R
-import ru.zavanton.demoimage.dialog.HelperDialog
 
 class MainFragment : Fragment(), MainView {
 
@@ -38,8 +37,7 @@ class MainFragment : Fragment(), MainView {
         super.onViewCreated(view, savedInstanceState)
 
         showDialogButton.setOnClickListener {
-            val dialogFragment = HelperDialog.newInstance("Attention")
-            presenter.onHelperButtonClick(fragmentManager, dialogFragment)
+            presenter.onHelperButtonClick()
         }
     }
 
