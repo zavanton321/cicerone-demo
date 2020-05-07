@@ -29,4 +29,8 @@ class MainPresenter {
     fun onExitButtonClick() {
         router.exit()
     }
+
+    fun onHelperButtonClick() {
+
+    }
 }

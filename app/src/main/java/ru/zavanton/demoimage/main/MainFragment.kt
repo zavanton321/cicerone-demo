@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_main.*
 import ru.zavanton.demoimage.R
+import ru.zavanton.demoimage.dialog.HelperDialog
 
 class MainFragment : Fragment(), MainView {
 
@@ -42,6 +43,12 @@ class MainFragment : Fragment(), MainView {
 
         infoButton.setOnClickListener {
             presenter.onInfoButtonClick()
+        }
+
+        helperButton.setOnClickListener {
+            presenter.onHelperButtonClick()
+
+            HelperDialog.newInstance().show(fragmentManager, "helper")
         }
 
         exitButton.setOnClickListener {
