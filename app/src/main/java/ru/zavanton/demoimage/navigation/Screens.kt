@@ -6,6 +6,14 @@ import androidx.fragment.app.Fragment
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 import ru.zavanton.demoimage.detail.DetailFragment
 import ru.zavanton.demoimage.info.InfoActivity
+import ru.zavanton.demoimage.main.MainFragment
+
+object MainScreen : SupportAppScreen() {
+
+    override fun getFragment(): Fragment? {
+        return MainFragment.newInstance()
+    }
+}
 
 object DetailScreen : SupportAppScreen() {
 

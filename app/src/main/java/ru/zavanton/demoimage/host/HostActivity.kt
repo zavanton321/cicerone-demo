@@ -6,9 +6,10 @@ import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.zavanton.demoimage.R
 import ru.zavanton.demoimage.app.App
-import ru.zavanton.demoimage.main.MainFragment
 
 class HostActivity : AppCompatActivity() {
+
+    private val presenter = HostPresenter()
 
     private val navigator: Navigator = SupportAppNavigator(this, R.id.fragmentContainer)
 
@@ -16,11 +17,7 @@ class HostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (supportFragmentManager.findFragmentById(R.id.fragmentContainer) == null) {
-            supportFragmentManager.beginTransaction()
-                .add(R.id.fragmentContainer, MainFragment.newInstance())
-                .commit()
-        }
+        presenter.toMainFragment()
     }
 
     override fun onResumeFragments() {
