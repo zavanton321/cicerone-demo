@@ -1,6 +1,7 @@
 package ru.zavanton.demoimage.main
 
 import ru.zavanton.demoimage.app.App
+import ru.zavanton.demoimage.navigation.DetailScreen
 
 class MainPresenter {
 
@@ -17,7 +18,7 @@ class MainPresenter {
     }
 
     fun onButtonClick() {
-        view?.goToDetails()
+        router.navigateTo(DetailScreen)
     }
 
     fun onExitButtonClick() {

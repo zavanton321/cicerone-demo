@@ -50,8 +50,4 @@ class MainFragment : Fragment(), MainView {
         super.onDestroy()
         presenter.detachView()
     }
-
-    override fun goToDetails() {
-        (requireActivity() as HostView).goToDetails()
-    }
 }

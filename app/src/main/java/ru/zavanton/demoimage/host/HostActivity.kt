@@ -36,10 +36,4 @@ class HostActivity : AppCompatActivity(), HostView {
 
         App.instance.provideNavigatorHolder().removeNavigator()
     }
-
-    override fun goToDetails() {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, DetailFragment.newInstance())
-            .commit()
-    }
 }
