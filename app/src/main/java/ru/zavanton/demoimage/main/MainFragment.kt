@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_main.*
 import ru.zavanton.demoimage.R
-import ru.zavanton.demoimage.host.HostView
 
 class MainFragment : Fragment(), MainView {
 
@@ -39,6 +38,10 @@ class MainFragment : Fragment(), MainView {
 
         okButton.setOnClickListener {
             presenter.onButtonClick()
+        }
+
+        infoButton.setOnClickListener {
+            presenter.onInfoButtonClick()
         }
 
         exitButton.setOnClickListener {

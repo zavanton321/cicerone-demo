@@ -10,17 +10,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Go to detail"
-        app:layout_constraintBottom_toTopOf="@id/exitButton"
+        app:layout_constraintBottom_toTopOf="@id/infoButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/infoButton"
+        android:text="Show Info"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/okButton"
+        app:layout_constraintBottom_toTopOf="@id/exitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 
     <Button
         android:id="@+id/exitButton"
         android:text="Exit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/okButton"
+        app:layout_constraintTop_toBottomOf="@id/infoButton"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

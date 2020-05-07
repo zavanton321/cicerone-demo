@@ -4,13 +4,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
-import ru.terrakok.cicerone.commands.Command
 import ru.zavanton.demoimage.R
 import ru.zavanton.demoimage.app.App
-import ru.zavanton.demoimage.detail.DetailFragment
 import ru.zavanton.demoimage.main.MainFragment
 
-class HostActivity : AppCompatActivity(), HostView {
+class HostActivity : AppCompatActivity() {
 
     private val navigator: Navigator = SupportAppNavigator(this, R.id.fragmentContainer)
 
