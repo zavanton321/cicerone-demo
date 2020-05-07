@@ -40,6 +40,10 @@ class MainFragment : Fragment(), MainView {
         okButton.setOnClickListener {
             presenter.onButtonClick()
         }
+
+        exitButton.setOnClickListener {
+            presenter.onExitButtonClick()
+        }
     }
 
     override fun onDestroy() {
