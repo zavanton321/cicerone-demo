@@ -1,7 +1,6 @@
 package ru.zavanton.demoimage.dialog
 
 import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
@@ -11,29 +10,32 @@ class HelperDialog : DialogFragment() {
 
     companion object {
 
-        fun newInstance(): HelperDialog {
+        private const val TITLE = "title"
+
+        fun newInstance(title: String): HelperDialog {
             return HelperDialog()
+                .also { helperDialog ->
+                    helperDialog.arguments = Bundle()
+                        .also { bundle ->
+                            bundle.putString(TITLE, title)
+                        }
+                }
         }
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val builder = AlertDialog.Builder(requireContext())
+        val title = arguments?.getString(TITLE) ?: "default title"
 
-        builder.setTitle("Some Title")
+        return AlertDialog.Builder(requireContext())
+            .setTitle(title)
             .setMessage("Some message")
             .setCancelable(true)
-            .setPositiveButton("Ok",
-                DialogInterface.OnClickListener { dialog, which ->
-                    Log.d(
-                        "zavanton",
-                        "zavanton - ok"
-                    )
-                })
-            .setNegativeButton("Cancel",
-                DialogInterface.OnClickListener { dialog, which ->
-                    // no implementation
-                })
-
-        return builder.create()
+            .setPositiveButton("Ok") { dialog, which ->
+                Log.d("zavanton", "zavanton - ok")
+            }
+            .setNegativeButton("Cancel") { dialog, which ->
+                // no implementation
+            }
+            .create()
     }
 }

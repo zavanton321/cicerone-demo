@@ -21,7 +21,5 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".info.InfoActivity" />
-
     </application>
 </manifest>

@@ -3,7 +3,6 @@ package ru.zavanton.demoimage.navigation
 import androidx.fragment.app.FragmentActivity
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.commands.Command
-import ru.zavanton.demoimage.dialog.HelperDialog
 
 internal class CustomNavigator(activity: FragmentActivity, containerId: Int) :
     SupportAppNavigator(activity, containerId) {
@@ -12,7 +11,11 @@ internal class CustomNavigator(activity: FragmentActivity, containerId: Int) :
         super.applyCommand(command)
 
         if (command is ShowDialogCommand) {
-            HelperDialog.newInstance().show(command.fragmentManager, "some tag")
+            val fragmentManager = command.fragmentManager
+            val tag = command.tag
+            val dialogFragment = command.dialogFragment
+
+            dialogFragment.show(fragmentManager, tag)
         }
     }
 }
