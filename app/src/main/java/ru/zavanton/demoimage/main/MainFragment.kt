@@ -45,7 +45,7 @@ class MainFragment : Fragment(), MainView {
         }
 
         helperButton.setOnClickListener {
-            presenter.onHelperButtonClick(fragmentManager)
+            presenter.onHelperButtonClick()
         }
 
         exitButton.setOnClickListener {

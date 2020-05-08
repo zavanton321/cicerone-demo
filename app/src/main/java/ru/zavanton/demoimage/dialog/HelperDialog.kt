@@ -11,15 +11,24 @@ class HelperDialog : DialogFragment() {
 
     companion object {
 
-        fun newInstance(): HelperDialog {
+        private const val TITLE = "title"
+
+        fun newInstance(title: String): HelperDialog {
             return HelperDialog()
+                .also { dialog ->
+                    dialog.arguments = Bundle()
+                        .also { bundle ->
+                            bundle.putString(TITLE, title)
+                        }
+                }
         }
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val builder = AlertDialog.Builder(requireContext())
+        val title = arguments?.getString(TITLE) ?: "some default title"
 
-        builder.setTitle("Some Title")
+        return AlertDialog.Builder(requireContext())
+            .setTitle(title)
             .setMessage("Some message")
             .setCancelable(true)
             .setPositiveButton("Ok",
@@ -33,7 +42,6 @@ class HelperDialog : DialogFragment() {
                 DialogInterface.OnClickListener { dialog, which ->
                     // no implementation
                 })
-
-        return builder.create()
+            .create()
     }
 }

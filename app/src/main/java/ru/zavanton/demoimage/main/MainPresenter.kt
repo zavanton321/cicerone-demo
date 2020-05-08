@@ -1,8 +1,8 @@
 package ru.zavanton.demoimage.main
 
-import androidx.fragment.app.FragmentManager
 import ru.zavanton.demoimage.app.App
 import ru.zavanton.demoimage.navigation.DetailScreen
+import ru.zavanton.demoimage.navigation.HelperDialogScreen
 import ru.zavanton.demoimage.navigation.InfoScreen
 
 class MainPresenter {
@@ -31,7 +31,7 @@ class MainPresenter {
         router.exit()
     }
 
-    fun onHelperButtonClick(fragmentManager: FragmentManager?) {
-        router.showDialog(fragmentManager)
+    fun onHelperButtonClick() {
+        router.showDialog(HelperDialogScreen("Attention"))
     }
 }
